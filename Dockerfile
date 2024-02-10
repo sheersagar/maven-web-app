@@ -1,7 +1,7 @@
-FROM tomcat:8.0.20-jre8
-
-MAINTAINER Ashok <ashok@oracle.com>
-
+FROM openjdk:11-jre-slim
+WORKDIR /app
+COPY target/maven-web-app.war /app/maven-web-app.war
 EXPOSE 8080
 
-COPY target/maven-web-app.war /usr/local/tomcat/webapps/maven-web-app.war
+
+ENTRYPOINT ["java", "-jar", "maven-web-app.war"]
